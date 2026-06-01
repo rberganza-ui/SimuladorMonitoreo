@@ -6,6 +6,8 @@ package sensores;
 
 import actuadores.Buzzer;
 import actuadores.LedRGB;
+import excepciones.SensorDesactivadoException;
+import excepciones.ValorFueraDeRangoException;
 
 /**
  *
@@ -32,9 +34,15 @@ public class SensorNivel extends Sensor {
     }
     
     
-    public void registrarNivel(double nivel){
-        valorActual =nivel;
+    public void registrarNivel(double nivel) throws ValorFueraDeRangoException, SensorDesactivadoException {
+    if (!activo) {
+        throw new SensorDesactivadoException();
     }
+    if (nivel < 0 || nivel > alturaMax) {
+        throw new ValorFueraDeRangoException();
+    }
+    valorActual = nivel;
+}
     
     public double calcularPorcentaje(){
         return (valorActual/alturaMax)*100;

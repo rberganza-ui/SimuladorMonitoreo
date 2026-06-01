@@ -5,6 +5,7 @@
 package persistencia;
 
 import java.io.*;
+import java.util.ArrayList;
 
 public class GestorArchivos {
 
@@ -41,18 +42,16 @@ public class GestorArchivos {
 }
     
   
-    public void leerArchivo(String nombre) throws IOException {
-
-    File f = new File(nombre);
-
-    try (BufferedReader bufferedReader =new BufferedReader(new FileReader(f))) {
-
-        String linea;
-
-        while ((linea = bufferedReader.readLine()) != null) {
-            System.out.println(linea);
+    public ArrayList<String> obtenerLineas(String nombre) throws IOException {
+        ArrayList<String> lineas = new ArrayList<>();
+        File f = new File(nombre);
+        try (BufferedReader br = new BufferedReader(new FileReader(f))) {
+            String linea;
+            while ((linea = br.readLine()) != null) {
+                lineas.add(linea);
+            }
         }
-    }
+        return lineas;
 }
 
     

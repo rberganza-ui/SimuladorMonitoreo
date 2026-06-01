@@ -32,7 +32,7 @@ public abstract class Actuador implements Activable{
         return activo;
     }
     
-    public abstract void ejecutar();
+    public abstract String ejecutar();
     
     
 }

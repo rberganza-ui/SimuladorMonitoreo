@@ -6,6 +6,8 @@ package sensores;
 
 import actuadores.Buzzer;
 import actuadores.LedRGB;
+import excepciones.SensorDesactivadoException;
+import excepciones.ValorFueraDeRangoException;
 
 /**
  *
@@ -31,8 +33,14 @@ public class SensorPresion extends Sensor{
     
     
 
-    public void registrarPresion(double presion){
-        valorActual=presion;
+    public void registrarPresion(double presion) throws ValorFueraDeRangoException, SensorDesactivadoException {
+    if (!activo) {
+        throw new SensorDesactivadoException();
     }
+    if (presion < 0) {
+        throw new ValorFueraDeRangoException();
+    }
+    valorActual = presion;
+}
     
 }

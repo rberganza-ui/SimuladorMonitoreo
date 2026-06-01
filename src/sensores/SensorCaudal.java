@@ -6,6 +6,8 @@ package sensores;
 
 import actuadores.Buzzer;
 import actuadores.LedRGB;
+import excepciones.SensorDesactivadoException;
+import excepciones.ValorFueraDeRangoException;
 
 /**
  *
@@ -29,9 +31,15 @@ public class SensorCaudal extends Sensor{
         return buzzer;
     }
    
-    public void registrarCaudal(double caudal){
-        valorActual=caudal;
+    public void registrarCaudal(double caudal) throws ValorFueraDeRangoException, SensorDesactivadoException {
+    if (!activo) {
+        throw new SensorDesactivadoException();
     }
+    if (caudal < 0) {
+        throw new ValorFueraDeRangoException();
+    }
+    valorActual = caudal;
+}
     
     public double calcularVolumen(double minutos){
         return (valorActual*minutos);

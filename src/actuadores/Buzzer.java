@@ -9,7 +9,7 @@ package actuadores;
  * @author rodolfo
  */
 public class Buzzer extends Actuador{
-    protected String intensidad;
+    public String intensidad;
 
     public Buzzer(String intensidad, String nombre) {
         super(nombre);
@@ -23,15 +23,13 @@ public class Buzzer extends Actuador{
     
     
     @Override
-    public void ejecutar(){
-        if(!activo){
-            System.out.println("Buzzer esta desactivado");
-            
-        }
-        else{
-            System.out.println("Buzzer esta sonando "+intensidad);
-            
-        }
-    };
+public String ejecutar(){
+    if(!activo){
+        return "Buzzer desactivado";
+    }
+    else{
+        return "Buzzer sonando a " + intensidad +" intensidad";
+    }
+}
     
 }

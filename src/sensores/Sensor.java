@@ -4,6 +4,7 @@
  */
 package sensores;
 
+import excepciones.SensorDesactivadoException;
 import interfaces.Activable;
 
 /**
@@ -41,10 +42,12 @@ public class Sensor implements Activable{
     }
     
     
-    public void leervalor(double entrada){
-        valorActual=entrada;
-        
+    public void leervalor(double entrada) throws SensorDesactivadoException {
+    if (!activo) {
+        throw new SensorDesactivadoException();
     }
+    valorActual = entrada;
+}
     @Override
     public void activar(){
         activo=true;
@@ -53,6 +56,55 @@ public class Sensor implements Activable{
     public void desactivar(){
         activo=false;
     }
+    public String obtenerEstado(Sensor s) {
+    if (s instanceof SensorTemperatura st) {
+        double v = st.getValorActual();
+        if (v >= 40) {
+            return "ALARMA";
+        } else if (v >= 30) {
+            return "ADVERTENCIA";
+        } else {
+            return "NORMAL";
+        }
+    } else if (s instanceof SensorNivel sn) {
+        double p = sn.calcularPorcentaje();
+        if (p >= 95) {
+            return "ALARMA";
+        } else if (p >= 80) {
+            return "ADVERTENCIA";
+        } else {
+            return "NORMAL";
+        }
+    } else if (s instanceof SensorPresion sp) {
+        double v = sp.getValorActual();
+        if (v >= 8) {
+            return "ALARMA";
+        } else if (v >= 5) {
+            return "ADVERTENCIA";
+        } else {
+            return "NORMAL";
+        }
+    } else if (s instanceof SensorCaudal sc) {
+        double v = sc.getValorActual();
+        if (v < 50) {
+            return "ALARMA";
+        } else if (v < 100) {
+            return "ADVERTENCIA";
+        } else {
+            return "NORMAL";
+        }
+    } else if (s instanceof SensorProximidad sp) {
+        int b = sp.getCantidadBotellasDetectadas();
+        if (b < 150) {
+            return "ALARMA";
+        } else if (b < 250) {
+            return "ADVERTENCIA";
+        } else {
+            return "NORMAL";
+        }
+    }
+    return "NORMAL";
+}
 
     @Override
     public String toString() {

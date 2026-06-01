@@ -9,7 +9,7 @@ package actuadores;
  * @author rodolfo
  */
 public class LedRGB extends Actuador{
-    protected String Color;
+    public String Color;
 
     public LedRGB(String nombre) {
         super(nombre);
@@ -22,14 +22,12 @@ public class LedRGB extends Actuador{
     
     
     @Override
-    public void ejecutar(){
-        if(!activo){
-            System.out.println("LedRGB esta desactivado");
-            
-        }
-        else{
-            System.out.println("LedRGB esta encendido de color "+Color);
-            
-        }
-    };
+    public String ejecutar(){
+    if(!activo){
+        return "LedRGB desactivado";
+    }
+    else{
+        return "LedRGB encendido de color " + Color;
+    }
+}
 }

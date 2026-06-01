@@ -39,6 +39,7 @@ public class SensorProximidad extends Sensor{
     
     public void detectarBotella(){
         cantidadBotellasDetectadas++;
+        valorActual = cantidadBotellasDetectadas;
     }
     
     

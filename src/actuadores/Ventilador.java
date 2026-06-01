@@ -9,7 +9,7 @@ package actuadores;
  * @author rodolfo
  */
 public class Ventilador extends Actuador {
-    protected int velocidad;
+    public int velocidad;
 
     public Ventilador(String nombre) {
         super(nombre);
@@ -23,14 +23,13 @@ public class Ventilador extends Actuador {
     
     
     @Override
-    public void ejecutar(){
-        if(!activo){
-            System.out.println("Ventilador esta desactivado");
-            
-        }
-        else{
-            System.out.println("Ventilador esta encendido al "+velocidad+"%");
-            
-        }
-    };
+public String ejecutar(){
+    if(!activo){
+        return "Ventilador desactivado";
+    }
+    else{
+        return "Ventilador encendido al " + velocidad + "%";
+    }
+}
+
 }
