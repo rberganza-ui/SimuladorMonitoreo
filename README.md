@@ -26,12 +26,14 @@ Las lecturas quedan guardadas en archivos de texto a través del GestorArchivos.
 
 ¿Cómo se usa?
 Panel principal (pestaña 1)
+
 Muestra la información del sensor seleccionado en la lista. Incluye el tipo de sensor, su valor actual con unidad de medida y su estado (normal, advertencia o alarma). 
 También muestra el estado de los actuadores asociados: color del LED, intensidad del buzzer y velocidad del ventilador (solo temperatura).
 Según el tipo de sensor, aparecen controles adicionales como el promedio histórico (temperatura), el porcentaje de llenado (nivel), el contador de botellas (proximidad) o el cálculo de volumen (debido al caudal). 
 El botón Activar/Desactivar permite cambiar el estado del sensor desde esta misma pestaña.
 
 Registrar valor (pestaña 2)
+
 Permite ingresar una lectura manual para el sensor seleccionado.
 
 Seleccionar un sensor en la lista de la izquierda.
@@ -41,12 +43,14 @@ El sistema evalúa automáticamente la lectura y actualiza los actuadores.
 Nota: Si el sensor está desactivado o el valor está fuera de rango, se muestra un mensaje de error.
 
 Historial (pestaña 3)
+
 Muestra el registro de eventos del sistema (sensores agregados, activaciones, advertencias y alarmas) leídos desde historial.txt.
 
 Presionar Actualizar para refrescar la vista.
 Los eventos más recientes aparecen primero.
 
 Agregar sensor (pestaña 4)
+
 Permite agregar nuevos sensores en tiempo de ejecución.
 
 Seleccionar el tipo de sensor en el combo.
